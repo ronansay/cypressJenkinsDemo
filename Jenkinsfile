@@ -8,12 +8,12 @@ pipeline {
   stages {
      stage('Dependencies') {
         steps {
-            sh 'npm i'
+            bat 'npm i'
         }
      }
      stage('e2e Tests') {
         steps {
-            sh 'npm run cypress:chrome'
+            bat 'npm run cypress:chrome'
         }
      }
   }
