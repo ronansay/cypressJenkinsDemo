@@ -6,7 +6,7 @@
   "scripts": {
     "cypress:chrome": "npx cypress run --headless --browser chrome",
     "cypress:edge": "npx cypress run --headless --browser edge",
-    "test":"NO_COLOR=1 npx cypress run"
+    "test":"npx cypress run --NO_COLOR=1"
   },
   "author": "Rohan Deshmukh",
   "license": "ISC",
