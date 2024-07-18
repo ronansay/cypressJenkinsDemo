@@ -4,7 +4,8 @@
   "description": "Cypress Jenkingsdemo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress:chrome": "npx cypress run --headless --browser chrome",
+    "cypress:edge": "npx cypress run --headless --browser edge"
   },
   "author": "Rohan Deshmukh",
   "license": "ISC",
