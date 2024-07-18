@@ -4,9 +4,9 @@
   "description": "Cypress Jenkingsdemo",
   "main": "index.js",
   "scripts": {
-    "cypress:chrome": "npx cypress run --headless --browser chrome",
+    "cypress:chrome": "npx cypress run NO_COLOR=1 --headless --browser chrome",
     "cypress:edge": "npx cypress run --headless --browser edge",
-    "test":"npx cypress run --NO_COLOR=1"
+    "test":"npx cypress run NO_COLOR=1"
   },
   "author": "Rohan Deshmukh",
   "license": "ISC",
