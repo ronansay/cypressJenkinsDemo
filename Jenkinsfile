@@ -1,26 +1,38 @@
 pipeline {
   agent any
   
-  tools {nodejs "nodejs21"}
+  parameters{
+    string(name: 'SPEC', defaultValue: 'cypress/e2e/*.js', description:"Enter Script path you want to run")
+    choice(name: 'BROWSER', choices:['chrome', 'firefox', 'edge'], description:"Enter Browser you want to run")
+  }
 
   options {ansiColor('xterm')}
 
   stages {
-     stage('Dependencies') {
-        steps {
-            bat 'npm i'
+    stage('Build') {
+        steps{
+            echo 'Building the Application'
         }
      }
-     stage('e2e Tests 1') {
+     stage('Testing') {
         steps {
-            bat 'npm run cypress:chrome'
+            bat "npm i"
+            bat "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
         }
      }
-     stage('e2e Tests 2') {
-        steps {
-            bat 'npm run test'
+     
+     stage('Deploying') {
+        steps{
+            echo 'Deploy the Application'
         }
+        
      }
+  }
+
+  post{
+    always{
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+    }
   }
   
    
